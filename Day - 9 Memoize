@@ -1,0 +1,31 @@
+/**
+ * @param {Function} fn
+ */
+function memoize(fn) {
+    let result = {}
+    return function(...args) {
+        if(args in result){
+            console.log(result)
+            return result[args]
+        }
+        else{
+            let abc = fn(...args);
+              result[args] = abc;
+              console.log(abc)
+              return abc;
+        }
+        
+    }
+}
+
+
+/** 
+ * let callCount = 0;
+ * const memoizedFn = memoize(function (a, b) {
+ *	 callCount += 1;
+ *   return a + b;
+ * })
+ * memoizedFn(2, 3) // 5
+ * memoizedFn(2, 3) // 5
+ * console.log(callCount) // 1 
+ */
